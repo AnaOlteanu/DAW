@@ -1,0 +1,51 @@
+﻿@model proiect.Models.ContactInfo
+@{
+    ViewBag.Title = "Update contact info"; }
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "ContactInfo", method: FormMethod.Post))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    @Html.HiddenFor(b => b.ContactInfoId)
+
+    @Html.LabelFor(bt => bt.PhoneNumber, "Phone Number:")
+    <br />
+    @Html.EditorFor(bt => bt.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(bt => bt.PhoneNumber, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(bt => bt.BirthYear, " BirthYear:")
+    <br />
+    @Html.EditorFor(bt => bt.BirthYear, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(bt => bt.BirthYear, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(bt => bt.BirthMonth, " BirthMonth:")
+    <br />
+    @Html.EditorFor(bt => bt.BirthMonth, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(bt => bt.BirthMonth, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(bt => bt.BirthDay, " BirthDay:")
+    <br />
+    @Html.EditorFor(bt => bt.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(bt => bt.BirthDay, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(bt => bt.Email, " Email:")
+    <br />
+    @Html.EditorFor(bt => bt.Email, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(bt => bt.Email, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(bt => bt.GenderType, " GenderType:")
+    <br />
+    @Html.EditorFor(bt => bt.GenderType, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(bt => bt.GenderType, "", new { @class = "text-danger" })
+    <br />
+
+
+
+    <br />
+    <button class="btn btn-primary" type="submit">Update</button>
+}

@@ -1,0 +1,66 @@
+﻿@model proiect.Models.Movie
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm(actionName: "New", controllerName: "Movie", method: FormMethod.Post))
+{
+    @Html.Label("Title", "Movie Title:")
+    <br />
+    @Html.TextBoxFor(b => b.Title, null, new { placeholder = "Type in the movie's name", @class = "formcontrol" })
+    @Html.ValidationMessageFor(b => b.Title, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("ReleaseDate", "Release Date:")
+    <br />
+    @Html.TextBoxFor(b => b.ReleaseDate, null, new { placeholder = "Type in the movie's release date", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.ReleaseDate, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Description", "Description:")
+    <br />
+    @Html.TextArea("Description", null, new { placeholder = "Type in the movie's description", @class = "form-control", @rows = "10" })
+    @Html.ValidationMessageFor(b => b.Description, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Duration", "Duration:")
+    <br />
+    @Html.TextBoxFor(b => b.Duration, null, new { placeholder = "Type in the movie's  duration", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Duration, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(b => b.ActorsList, "Choose actors:")
+    <br />
+    for (int i = 0; i < Model.ActorsList.Count(); i++)
+    {
+        @Html.HiddenFor(b => b.ActorsList[i].Id)
+        @Html.HiddenFor(b => b.ActorsList[i].Name)
+        @Html.CheckBoxFor(b => b.ActorsList[i].Checked)
+        @Html.DisplayFor(b => b.ActorsList[i].Name)
+        <br />
+    }
+    <br />
+
+
+    @Html.Label("MovieType", "Movie Type:")
+    <br />
+    @Html.DropDownListFor(b => b.MovieTypeId, new SelectList(Model.MovieTypesList, "Value", "Text"), "Choose a movie type", new { @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.MovieTypeId, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.LabelFor(b => b.GenresList, "Choose genres:")
+    <br />
+    for (int i = 0; i < Model.GenresList.Count(); i++)
+    {
+        @Html.HiddenFor(b => b.GenresList[i].Id)
+        @Html.HiddenFor(b => b.GenresList[i].Name)
+        @Html.CheckBoxFor(b => b.GenresList[i].Checked)
+        @Html.DisplayFor(b => b.GenresList[i].Name)
+        <br />
+    }
+    <br />
+
+    <button class="btn btn-primary" type="submit">Create</button>
+}

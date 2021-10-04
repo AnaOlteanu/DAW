@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="jumbotron col-sm-6" style="background-color:lightcyan">
+        <h1>Movies</h1>
+        <p class="lead">
+            Click on the button to see more options on the list of movies!
+        </p>
+        <p>
+            <button class="btn btn-info">
+                @Html.ActionLink("Movies", "Index", "Movie")
+            </button>
+        </p>
+    </div>
+
+    <div class="jumbotron col-sm-6" style="background-color:lavender">
+        <h1>Actors</h1>
+        <p class="lead">
+            Click on the button to see more options on the list of actors!
+        </p>
+        <p>
+            <button class="btn btn-default">
+                @Html.ActionLink("Actors", "Index", "Actor")
+            </button>
+        </p>
+    </div>
+</div>
+
+<br />
+<br />
+<div class="row">
+    <div class="jumbotron col-sm-6" style="background-color:MistyRose">
+        <h1>Genres</h1>
+        <p class="lead">
+            Click on the button to see more options on the list of movies' genres!
+        </p>
+        <p>
+            <button class="btn btn-danger">
+                @Html.ActionLink("Genres", "Index", "Genre")
+            </button>
+        </p>
+    </div>
+
+    <div class="jumbotron col-sm-6" style="background-color: Beige">
+        <h1>Movie Types</h1>
+        <p class="lead">
+            Click on the button to see more options on the list of movie types!
+        </p>
+        <p>
+            <button class="btn btn-warning">
+                @Html.ActionLink("MovieTypes", "Index", "MovieType")
+            </button>
+        </p>
+    </div>
+</div>
+
+    <br />
+    <br />
+    <div class="jumbotron" style="background-color: #e6ffe6">
+        <h1>Contact Info</h1>
+        <p class="lead">
+            Click on the button to see more options on the list of contact infos!
+        </p>
+        <p>
+            <button class="btn btn-success">
+                @Html.ActionLink("ContactInfos", "Index", "ContactInfo")
+            </button>
+        </p>
+    </div>
+
+
+

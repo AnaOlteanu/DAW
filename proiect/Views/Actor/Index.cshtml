@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Actors"; }
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <thead>
+    <th>Actor</th>
+    <th>Update/Remove</th>
+    </thead>
+    <tbody>
+        @foreach (var actor in ViewBag.Actors)
+        {
+            <tr>
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @Html.Label("Name", "Name:")
+                            <br /> <p style="background-color:lavender">@actor.Name</p>
+
+                        </div>
+                    </div>
+
+                <td>
+                    @using (Html.BeginForm(actionName: "Edit", controllerName: "Actor", method: FormMethod.Get,
+               routeValues: new { id = actor.ActorId }))
+                    {
+                        <button type="submit" class="btn btn-link col-lg-3">Update</button>
+                    }
+                    @using (Html.BeginForm(actionName: "Delete", controllerName: "Actor", method: FormMethod.Post,
+                    routeValues: new { id = actor.ActorId }))
+                    {
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button type="submit" class="btn btn-link col-lg-3">Remove</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br /> @Html.ActionLink("Add actor", "New")

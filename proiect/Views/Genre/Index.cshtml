@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Genres";
+}
+<h2>@ViewBag.Title</h2>
+<table class="table">
+    <thead>
+    <th>Genre name</th>
+    <th>Update/Remove</th>
+    </thead>
+    <tbody>
+        @foreach (var genre in ViewBag.Genres)
+        {
+            <tr>
+                <td>@genre.Name</td>
+                <td>
+                    @using (Html.BeginForm(actionName: "Edit", controllerName: "Genre", method:
+                   FormMethod.Get,
+                    routeValues: new { id = genre.GenreId }))
+                    {
+                        <button type="submit" class="btn btn-link col-lg-3">Update</button>
+                    }
+                    @using (Html.BeginForm(actionName: "Delete", controllerName: "Genre", method:
+                   FormMethod.Post,
+                    routeValues: new { id = genre.GenreId }))
+                    {
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button type="submit" class="btn btn-link col-lg-3">Remove</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+@Html.ActionLink("Add movie type", "New")

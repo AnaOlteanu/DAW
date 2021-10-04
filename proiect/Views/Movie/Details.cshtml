@@ -1,0 +1,84 @@
+﻿@model proiect.Models.Movie
+@{
+    ViewBag.Title = "Details";
+    var emptyDescriptionMsgVar = "This movie has no description";
+}
+<h2>Details</h2>
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.Label("Title", "Title:")
+        <br />
+        <div class="bg-info text-white", style="font-size:large; margin-right:50%;">
+            @Html.DisplayFor(b => b.Title)
+        </div>
+        <br />
+        <br />
+        @Html.Label("RelaseDate", "Release Date:")
+        <br />
+        @Html.DisplayFor(b => b.ReleaseDate)
+        <br />
+        <br />
+        @Html.Label("Runtime", "Runtime(minutes):")
+        <br />
+        @Html.DisplayFor(b => b.Duration)
+        <br />
+        <br />
+
+        @if (Model.Actors.Count > 0)
+        {
+            @Html.Label("Actors", "Actors:")
+            <br />
+            <ul>
+                @foreach (var actor in Model.Actors)
+                {
+                    <li>@actor.Name</li>
+                }
+            </ul>
+        }
+        <br />
+        @if (Model.MovieType != null)
+        {
+            @Html.Label("MovieType", "Movie Type:")
+            <br />
+            @Html.DisplayFor(b => b.MovieType.Name)
+            <br />
+            <br />
+        }
+        @Html.Label("Description", "Description:")
+        <br />
+        <div class="panel-body">
+            @if (Model.Description.IsEmpty())
+            {
+                <p>@emptyDescriptionMsgVar</p>
+            }
+            else
+            {
+                @Html.Display("Description")
+                <br /><br />
+            }
+        </div>
+        @if (Model.Genres.Count > 0)
+        {
+            @Html.Label("Genres", "Genres:")
+            <br />
+            <ul>
+                @foreach (var genre in Model.Genres)
+                {
+                    <li>@genre.Name</li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Movie", method: FormMethod.Get, routeValues:
+new { id = Model.MovieId }))
+{
+    <button style="margin-right:5px" class="btn btn-info col-lg-1" type="submit">Update</button>
+}
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Movie", method: FormMethod.Post, routeValues:
+new { id = Model.MovieId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-info col-lg-1" type="submit">Delete</button>
+}
+<br />

@@ -1,0 +1,28 @@
+﻿@model proiect.Models.Actor
+@{
+    ViewBag.Title = "Create an actor";
+}
+<h2>@ViewBag.Title</h2>
+
+<br />
+@using (Html.BeginForm(actionName: "New", controllerName: "Actor", method: FormMethod.Post))
+{
+    @Html.LabelFor(c => c.Name, "Name:")
+    <br />
+    @Html.TextBoxFor(c => c.Name, null, new { placeholder = "Type in the actor name", @class = "form-control" })
+    @Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(c => c.ContactInfo.PhoneNumber, "Phone number:")
+    <br />
+    @Html.TextBoxFor(c => c.ContactInfo.PhoneNumber, null, new
+    {
+        placeholder = "Type in the phone number",
+        @class =
+   "form-control"
+    })
+    @Html.ValidationMessageFor(c => c.ContactInfo.PhoneNumber, "", new { @class = "text-danger" })
+    <br />
+
+    <button class="btn btn-primary" type="submit">Create</button>
+}

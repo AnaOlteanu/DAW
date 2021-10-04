@@ -1,0 +1,20 @@
+﻿@model proiect.Models.Genre
+@{
+    ViewBag.Title = "Create a genre";
+}
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm(actionName: "New", controllerName: "Genre", method: FormMethod.Post))
+{
+    @Html.LabelFor(bt => bt.Name, "Name:")
+    <br />
+    @Html.TextBoxFor(bt => bt.Name, null, new
+    {
+        placeholder = "Type in the genre's name",
+        @class =
+   "form-control"
+    })
+    @Html.ValidationMessageFor(bt => bt.Name, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <button class="btn btn-primary" type="submit">Create</button>
+}
